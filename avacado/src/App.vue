@@ -2,7 +2,7 @@
   <v-app>
     <v-app-bar
       app
-      color="primary"
+      color="teal"
       dark
     >
       <div class="d-flex align-center">
@@ -34,7 +34,7 @@
           <template v-slot:controller>
             <v-btn
               block
-              color="teal"
+              color="light-green"
             >
               <v-icon>mdi-plus</v-icon>
               Create
