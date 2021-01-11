@@ -1,7 +1,6 @@
 <template>
   <div>
     <v-row
-      no-gutters
     >
       <v-col class="col-sm-2" />
       <v-col

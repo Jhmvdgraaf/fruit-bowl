@@ -29,7 +29,8 @@
     <v-main>
       <v-container>
         <layout>
-          main shit
+          <cado>
+          </cado>
           <template v-slot:controller>
             <v-btn
               block
@@ -46,14 +47,16 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
-import Layout from './components/Layout.vue';
+import Vue from 'vue'
+import { Layout, Cado}  from './components/index'
+
 
 export default Vue.extend({
   name: 'App',
 
   components: {
     Layout,
+    Cado,
   },
 
   data: () => ({
