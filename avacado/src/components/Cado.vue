@@ -5,27 +5,38 @@
     shaped
     elevation="10"
     >
-      <v-card-title>         
+      <v-card-title>  
         <v-text-field
             v-model="task.title"
             label="Title"
-            :readonly="!editable"
-          />
+            v-if="editable"
+          />       
+        <strong 
+          v-else>
+          {{ task.title }}
+        </strong>
       </v-card-title>
       <v-card-subtitle>   
           <v-text-field
             v-model="task.dueDate"
             label="Done by"
-            :readonly="!editable"
+            v-if="editable"
           />
+          <span
+            v-else>
+            Due-Date: {{ task.dueDate }}
+          </span>
       </v-card-subtitle>
       <v-card-text>
         <v-textarea
           label="Description"
           auto-grow
           v-model="task.description"
-          :readonly="!editable"
+          v-if="editable"
         /> 
+        <div v-else>
+          <p>{{ task.description }}</p>
+        </div>
       </v-card-text>
       <v-card-actions>
         <v-btn
@@ -34,7 +45,7 @@
           small
           v-if="editable"
         >
-          <v-icon dark>mdi-delete</v-icon>
+          <v-icon>mdi-delete</v-icon>
         </v-btn>
         <v-spacer></v-spacer>
         <v-btn
