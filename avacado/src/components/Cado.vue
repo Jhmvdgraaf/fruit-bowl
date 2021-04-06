@@ -44,6 +44,7 @@
           fab
           small
           v-if="editable"
+          @click="remove(task.id)"
         >
           <v-icon>mdi-delete</v-icon>
         </v-btn>
@@ -77,13 +78,15 @@ import { Task } from '../task'
 export default Vue.extend({
   name: "Cado",
   props: {
-    task: { type: Object as () => Task, required: true }
+    task: { type: Object as () => Task, required: true },
+    save: { type: Function, required: true },
+    remove: { type: Function, required: true },
   },
-  data() { 
+  data(props: any) { 
+    const editable = !props.task.title
     return { 
-      editable: false,
+      editable,
     }
-  }
-  
+  },  
 })
 </script>

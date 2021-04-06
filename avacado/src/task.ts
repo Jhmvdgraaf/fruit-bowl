@@ -1,3 +1,5 @@
+import { uuidv4 } from "./utils/uuidv4";
+
 export interface Task {
   id: string;
   title: string;
@@ -9,7 +11,7 @@ export interface Task {
 
 export function getEmptyTask (): Task{
   return {
-    id: '',
+    id: uuidv4(),
     title: '',
     dueDate: '',
     description: '',

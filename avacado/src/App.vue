@@ -22,6 +22,8 @@
             v-for="task in tasks" 
             :key="task.id" 
             :task="task"
+            :save="save"
+            :remove="remove"
             class="task"
             >
           </cado>
@@ -29,6 +31,7 @@
             <v-btn
               block
               color="light-green"
+              @click="create"
             >
               <v-icon>mdi-plus</v-icon>
               Create
@@ -43,8 +46,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import { Layout, Cado}  from './components/index'
-import { getEmptyTask } from './task'
-
+import { Task, getEmptyTask } from './task'
 
 export default Vue.extend({
   name: 'App',
@@ -52,38 +54,20 @@ export default Vue.extend({
     Layout,
     Cado,
   },
-  data: () => ({
-    tasks: [{
-      ...getEmptyTask(),
-      id: '1',
-      title: 'the first iten',
-      dueDate: '2021-06-02',
-      description: 'this is my first item',
-    },
-    {
-      ...getEmptyTask(),
-      id: '2',
-      title: 'the second iten',
-      dueDate: '2021-06-02',
-      description: 'this is my second item',
-    },
-    {
-      ...getEmptyTask(),
-      id: '1',
-      title: 'the first iten',
-      dueDate: '2021-06-02',
-      description: 'this is my first item',
-    },
-    {
-      ...getEmptyTask(),
-      id: '2',
-      title: 'the second iten',
-      dueDate: '2021-06-02',
-      description: 'this is my second item',
+  data () {
+    const tasks: Task[] = []
+    return {
+      create: () => { tasks.push(getEmptyTask()) },
+      save: () => { console.log('saved')},
+      remove: (id: string) => 
+      { 
+        tasks.splice(tasks.findIndex((task) => task.id === id), 1) 
+      },
+      tasks 
     }
-    ]    
-  }),
-});
+  }
+  })
+
 </script>
 <style lang="scss">
 .task {
