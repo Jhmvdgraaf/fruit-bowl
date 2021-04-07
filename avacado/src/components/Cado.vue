@@ -62,7 +62,7 @@
           color="green"
           fab
           small
-          @click="() => editable = false"
+          @click="() => { editable = false; save() }"
           v-if="editable"
         >
           <v-icon>mdi-content-save</v-icon>

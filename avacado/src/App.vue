@@ -55,13 +55,16 @@ export default Vue.extend({
     Cado,
   },
   data () {
-    const tasks: Task[] = []
+    const tasksString: string | null = localStorage.getItem('tasks') 
+    const tasks: Task[] = tasksString ? JSON.parse(tasksString) : []
+    const save = () => { localStorage.setItem('tasks', JSON.stringify(tasks)) }
     return {
       create: () => { tasks.push(getEmptyTask()) },
-      save: () => { console.log('saved')},
+      save,
       remove: (id: string) => 
       { 
         tasks.splice(tasks.findIndex((task) => task.id === id), 1) 
+        save()
       },
       tasks 
     }
